@@ -6,9 +6,10 @@
     <meta http-equiv='X-UA-Compatible' content='IE=edge'>
     <meta name='viewport' content='width=device-width, initial-scale=1.0'>
     <style>
-        p {
+        .red {
             color: red;
-            font-weight: bold;
+            font-weight: bolder;
+            text-transform: uppercase;
         }
     </style>
     <title>M11005-3 : Les conditions</title>
@@ -42,7 +43,7 @@
     <?php
     $product1 = [
         'ref' => '47LG1000',
-        'name' => 'téléviseur LED de 47"',
+        'name' => 'Téléviseur LED 47"',
         'brand' => 'LG',
         'price' => '499',
         'stock' =>  [
@@ -52,7 +53,7 @@
     ];
     $product2 = [
         'ref' => 'ROB4000',
-        'name' => 'robot cuisine',
+        'name' => 'Robot de cuisine',
         'brand' => 'KENWOOD',
         'price' => '679',
         'stock' =>  [
@@ -62,17 +63,46 @@
     ];
     var_dump($product1);
     var_dump($product2);
-    if ($product1['stock']['Paris'] === 0) {
-        echo "<p>Le produit est indisponnible à Paris</p>";
-    } elseif ($product1['stock']['Lyon'] === 0) {
-        echo "<p>Le produit est indisponnible à Lyon</p>";
-    } elseif ($product2['stock']['Paris'] === 0) {
-        echo "<p>Le produit est indisponnible à Paris</p>";
-    } elseif ($product2['stock']['Lyon'] === 0) {
-        echo "<p>Le produit est indisponnible à Lyon</p>";
-    };
-    
     ?>
+
+    <h2><?php echo $product1["name"]; ?></h2>
+    <p>Stock à Paris :
+        <?php
+            if ($product1["stock"]["Paris"] === 0) {
+                 echo '<span class = "red">Non disponible</span>';
+            } else {
+                 echo $product1["stock"]["Paris"];
+            }
+        ?>
+    </p>
+    <p>Stock à Lyon :
+        <?php
+            if ($product1["stock"]["Lyon"] === 0) {
+                 echo '<span class = "red">Non disponible</span>';
+            } else {
+                 echo $product1["stock"]["Lyon"];
+            }
+        ?>
+    </p>
+    <h2><?php echo $product2["name"]; ?></h2>
+    <p>Stock à Paris :
+        <?php
+            if ($product2["stock"]["Paris"] === 0) {
+                 echo '<span class = "red">Non disponible</span>';
+            } else {
+                 echo $product2["stock"]["Paris"];
+            }
+        ?>
+    </p>
+    <p>Stock à Lyon :
+        <?php
+            if ($product2["stock"]["Lyon"] === 0) {
+                 echo '<span class = "red">Non disponible</span>';
+            } else {
+                 echo $product2["stock"]["Lyon"];
+            }
+        ?>
+    </p>
 </body>
 
 </html>
